@@ -1,0 +1,27 @@
+{
+  "name": "node-express-sequelize-with-postgres",
+  "version": "1.0.0",
+  "description": "Express-Sequelize-and-Postgres",
+  "main": "index.js",
+  "scripts": {
+    "filter": "babel-node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/knite51/Node-Express-Sequelize-with-Postgres.git"
+  },
+  "keywords": [
+    "express",
+    "sequelize",
+    "postgres"
+  ],
+  "author": "Knitedeveloper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/knite51/Node-Express-Sequelize-with-Postgres/issues"
+  },
+  "homepage": "https://github.com/knite51/Node-Express-Sequelize-with-Postgres#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
+}

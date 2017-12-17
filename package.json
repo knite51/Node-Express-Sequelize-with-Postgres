@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "filter": "babel-node index",
-    "lint": "node_modules/.bin/eslint ./ || true"
+    "lint": "node_modules/.bin/eslint ./ || true",
+    "test": "mocha --require babel-core/register ./src/tests/ ||true"
   },
   "repository": {
     "type": "git",
@@ -24,8 +25,14 @@
   "homepage": "https://github.com/knite51/Node-Express-Sequelize-with-Postgres#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "eslint": "^4.13.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0"
+  },
+  "dependencies": {
+    "expect": "^21.2.1",
+    "mocha": "^4.0.1"
   }
 }

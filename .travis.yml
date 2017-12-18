@@ -4,4 +4,7 @@ node_js: 'stable'
 script:
   - npm install
   - npm test
-  
+  - npm run coverage
+
+after_success:
+  - npm run report-coverage

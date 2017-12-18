@@ -6,7 +6,9 @@
   "scripts": {
     "filter": "babel-node index",
     "lint": "node_modules/.bin/eslint ./ || true",
-    "test": "mocha --require babel-core/register ./src/tests/ ||true"
+    "test": "nyc --reporter=html --reporter=text mocha --require babel-core/register ./src/tests/ || true",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "report-coverage": "nyc --reporter=lcov --reporter=text-lcov npm test"
   },
   "repository": {
     "type": "git",
@@ -27,9 +29,11 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "coveralls": "^3.0.0",
     "eslint": "^4.13.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0"
+    "eslint-plugin-import": "^2.8.0",
+    "nyc": "^11.3.0"
   },
   "dependencies": {
     "expect": "^21.2.1",

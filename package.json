@@ -8,7 +8,8 @@
     "lint": "node_modules/.bin/eslint ./ || true",
     "test": "nyc --reporter=html --reporter=text mocha --require babel-core/register ./src/tests/ || true",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "report-coverage": "nyc --reporter=lcov --reporter=text-lcov npm test"
+    "report-coverage": "nyc --reporter=lcov --reporter=text-lcov npm test",
+    "start": "nodemon bin/www/ --exec babel-node "
   },
   "repository": {
     "type": "git",
@@ -33,10 +34,18 @@
     "eslint": "^4.13.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
-    "nyc": "^11.3.0"
+    "nyc": "^11.3.0",
+    "sequelize-cli": "^3.2.0"
   },
   "dependencies": {
+    "body-parser": "^1.18.2",
     "expect": "^21.2.1",
-    "mocha": "^4.0.1"
+    "express": "^4.16.2",
+    "mocha": "^4.0.1",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.12.5",
+    "pg": "^7.4.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.28.6"
   }
 }

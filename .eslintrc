@@ -4,7 +4,8 @@
     "linebreak-style": 0,
     "arrow-body-style": "off",
     "import/no-unresolved": [0],
-    "import/extensions": 0
+    "import/extensions": 0,
+    "import/no-dynamic-require":"off"
   },
   "env": {
     "mocha": true

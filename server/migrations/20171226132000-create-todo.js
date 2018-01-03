@@ -1,5 +1,5 @@
-
-module.exports = {
+/* eslint-disable no-unused-vars */
+export default {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Todos', {
       id: {
@@ -10,11 +10,12 @@ module.exports = {
       },
       title: {
         type: Sequelize.STRING,
+        unique: true,
       },
       complete: {
         type: Sequelize.BOOLEAN,
       },
-      UserId: {
+      userId: {
         type: Sequelize.INTEGER,
       },
       createdAt: {

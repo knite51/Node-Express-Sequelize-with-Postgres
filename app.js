@@ -14,15 +14,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.
-app.get('/', (req, res) => res.status(200).send({
-  message: 'Welcome to the beginning of nothingness.',
-}));
+const today = new Date();
+const date = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+app.get('/', (req, res) => res.status(200).send(`You visited at localhost:3000 on ${date}`));
 
 // add users
 app.post('/users', (req, res) => {
   models.User.create({
     email: req.body.email,
   }).then((user) => {
+    res.json(user);
+  });
+});
+
+// get all users
+app.get('/user', (req, res) => {
+  models.User.findAll({}).then((user) => {
     res.json(user);
   });
 });
@@ -66,7 +73,7 @@ app.put('/todo/:id', (req, res) => {
       todo.updateAttributes({
         title: req.body.title,
         complete: req.body.complete,
-      }).then((todo) => {
+      }).then(() => {
         res.send(todo);
       });
     }

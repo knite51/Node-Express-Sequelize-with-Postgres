@@ -9,7 +9,7 @@
     "test": "nyc --reporter=html --reporter=text mocha --require babel-core/register ./src/tests/ || true",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "report-coverage": "nyc --reporter=lcov --reporter=text-lcov npm test",
-    "start": "nodemon bin/www/ --exec babel-node "
+    "start": "nodemon ./bin/www/ --exec babel-node "
   },
   "repository": {
     "type": "git",

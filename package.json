@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "filter": "babel-node index",
-    "lint": "node_modules/.bin/eslint ./ || true",
+    "lint": "eslint ./ || true",
     "test": "nyc --reporter=html --reporter=text mocha --require babel-core/register ./src/tests/ || true",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "report-coverage": "nyc --reporter=lcov --reporter=text-lcov npm test",
+    "migratedb": "sequelize db:migrate",
+    "undo:migration": "sequelize db:migrate:undo:all",
     "start": "nodemon ./bin/www --exec babel-node"
   },
   "repository": {

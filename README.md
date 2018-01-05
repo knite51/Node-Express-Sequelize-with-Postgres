@@ -13,6 +13,10 @@ Database was managed by Postgres using Sequelize as ORM
 * Clone repository by entering the command `git clone https://github.com/knite51/Node-Express-Sequelize-with-Postgres.git` on your terminal.
 * Navigate to project folder on your terminal
 * Enter the command `npm install` to install application dependencies.
+* Download postgres on pc. You should have a pgadmin application after installation
+* Setup password and necessary information
+* Navigate to config.json file in the server directory and input your username and password
+* Run `npm run migratedb` to run migration to the postgres db
 * Start server with command `npm run start`.
 * Enter (localhost:3000) into URL in your browser 
 

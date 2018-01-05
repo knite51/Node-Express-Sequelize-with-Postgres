@@ -14,8 +14,8 @@ Database was managed by Postgres using Sequelize as ORM
 * Navigate to project folder on your terminal
 * Enter the command `npm install` to install application dependencies.
 * Download postgres on pc. You should have a pgadmin application after installation
-* Setup password and necessary information
-* Navigate to config.json file in the server directory and input your username and password
+* Setup username, password and create a database(name db todos preferably) using the pgadmin application.
+* Navigate to config.json file in the server directory and edit username, password and db name to match your setup in the pgadmin 4.
 * Run `npm run migratedb` to run migration to the postgres db
 * Start server with command `npm run start`.
 * Enter (localhost:3000) into URL in your browser 

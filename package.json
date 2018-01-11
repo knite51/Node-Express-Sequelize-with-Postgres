@@ -4,9 +4,8 @@
   "description": "Express-Sequelize-and-Postgres",
   "main": "index.js",
   "scripts": {
-    "filter": "babel-node index",
     "lint": "eslint ./ || true",
-    "test": "nyc --reporter=html --reporter=text mocha --require babel-core/register ./src/tests/ || true",
+    "test": "nyc --reporter=html --reporter=text mocha --require babel-core/register ./server/tests/controllers || true",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "report-coverage": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "migratedb": "sequelize db:migrate",
@@ -48,6 +47,7 @@
     "nodemon": "^1.12.5",
     "pg": "^7.4.0",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.28.6"
+    "sequelize": "^4.28.6",
+    "supertest": "^3.0.0"
   }
 }

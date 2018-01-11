@@ -7,14 +7,14 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    userId: DataTypes.INTEGER,
-  }, {
-    classMethods: {
-      associate(models) {
-        // associations can be defined here
-        Todo.belongsTo(models.User);
-      },
+    userId: {
+      type: DataTypes.INTEGER,
     },
   });
+  Todo.associate = (models) => {
+    Todo.belongsTo(models.User, {
+      foreignKey: 'userId',
+    });
+  };
   return Todo;
 };

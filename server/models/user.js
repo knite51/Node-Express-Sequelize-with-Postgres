@@ -15,12 +15,11 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    classMethods: {
-      associate(models) {
-        // associations can be defined here
-        User.hasMany(models.Todo);
-      },
-    },
   });
+  User.associate = (models) => {
+    User.hasMany(models.Todo, {
+      foreignKey: 'userId',
+    });
+  };
   return User;
 };

@@ -1,9 +1,12 @@
+
 import models from '../models/';
+
+const { Todo, User } = models;
 
 export default{
   // get all todos
   fetchAllTodos: (req, res) => {
-    models.Todo.findAll({})
+    Todo.findAll({ include: [{ model: User }] })
       .then((todos) => {
         if (todos.length !== 0) {
           return res.status(200).send({ todos, message: 'Retrived all todos' });
@@ -17,7 +20,7 @@ export default{
   },
   // get a todo
   fetchOneTodo: (req, res) => {
-    models.Todo.findById(req.params.id)
+    Todo.findById(req.params.id)
       .then((todo) => {
         if (!todo) {
           return res.status(404).send({ message: 'Todo does not exists!' });
@@ -30,12 +33,26 @@ export default{
   },
   // Post a todo
   addNewTodo: (req, res) => {
-    models.Todo.create({
-      title: req.body.title,
-      userId: req.body.userId,
-    })
-      .then((todo) => {
-        return res.status(200).send({ todo, message: 'New Todo Created!' });
+    const TodoInfo = req.body;
+    const {
+      title,
+      userId,
+    } = TodoInfo;
+    User.find({ where: { id: userId } })
+      .then((user) => {
+        if (!user) {
+          return res.status(404).send({ message: 'Nonexistent user! ' });
+        }
+        return Todo.create({
+          title,
+          userId,
+        })
+          .then((todo) => {
+            return res.status(200).send({ todo, message: 'New Todo Created!' });
+          })
+          .catch((err) => {
+            res.status(501).send({ err, message: 'Unknown error. Try again!' });
+          });
       })
       .catch((err) => {
         throw new Error(err);
@@ -44,7 +61,7 @@ export default{
   // Put a todo
   updateTodo: (req, res) => {
     const todoNewInfo = req.body;
-    models.Todo.findById(req.params.id)
+    Todo.findById(req.params.id)
       .then((todo) => {
         if (!todo) {
           res.status(404).send({ message: `Todo with id number ${req.params.id} does not exist!` });
@@ -63,7 +80,7 @@ export default{
   },
   // delete a todo
   deleteTodo: (req, res) => {
-    models.Todo.destroy({
+    Todo.destroy({
       where: {
         id: req.params.id,
       },
